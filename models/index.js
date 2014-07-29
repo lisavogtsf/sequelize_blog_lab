@@ -25,7 +25,7 @@ Object.keys(db).forEach(function(modelName) {
 
 // Associations
 db.author.hasMany(db.post);
-// db.post.belongsTo(db.author);
+db.post.belongsTo(db.author);
 
 // db.post.create({content: "Hello World"})
 //   .success(function(postObj){
@@ -52,16 +52,42 @@ db.author.hasMany(db.post);
 
 // })
 
+// new try in class
+db.author.find(1).success(function(foundAuthor){
+  var newPost = db.post.build({title: "hello worlds again!"});
+  foundAuthor.addPost(newPost).success(function(){
+    newPost.save()
+  })
+}); 
 
-db.post.create({content: "Literature"})
-  .success(function(post){
-    db.author.find(3).success(function(author){
-      author.setPosts([post])
-        .success(function(author){
-         console.log("Author: " + author + " Post:" + post);
-      })
-    });
-});
+
+
+// // delmer in class
+// db.author.hasMany(db.post);
+// db.post.belongsTo(db.author);
+
+// db.author.build({name: "Proust"}).save();
+// db.author.find(1).success(
+//   function(author){
+//     var newPost = db.post.build({title: "hello world"})
+//     author.setPosts([newPost]).success(
+//       function(){
+//         newPost.save();
+//       }
+//     )
+//   }
+// )
+
+// // how I was doing it, didn't work, ids not sticky
+// db.post.create({content: "Literature"})
+//   .success(function(post){
+//     db.author.find(3).success(function(author){
+//       author.setPosts([post])
+//         .success(function(author){
+//          console.log("Author: " + author + " Post:" + post);
+//       })
+//     });
+// });
 
 // db.post.find(1).success(function(post){
 //   console.log("found post: ", post);
