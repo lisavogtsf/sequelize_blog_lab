@@ -27,21 +27,28 @@ Object.keys(db).forEach(function(modelName) {
 db.author.hasMany(db.post);
 db.post.belongsTo(db.author);
 
-// more associations review
-db.author.find(1).success(function(foundAuthor){
-var newPost = db.post.build({title: "hello worlds again!"});
-foundAuthor.addPost(newPost).success(function(){
-  newPost.save().then(function(post){
-      console.log(post);
-  })
-})
-});
+// // more associations review
+// db.author.find(1).success(function(foundAuthor){
+// var newPost = db.post.build({content: "hello worlds again!"});
+// foundAuthor.addPost(newPost).success(function(arg){
+//   console.log("arg", arg);
+//   console.log("newPost", newPost)
+//   newPost.save().then(function(post){
+//       console.log(post);
+//   })
+// })
+// });
 
 
-// db.post.create({content: "Such an exciting post"})
-//   .success(function(postObj){
-//     console.log("postObj: ", postObj);
-//   });
+db.post.create({content: "Such an exciting post"})
+  .success(function(postObj){
+    console.log("postObj: ", postObj.dataValues);
+    db.author.find(2).success(function(authorObj){
+      console.log("authorObj", authorObj);
+      authorObj.addPost(postObj);
+    });
+
+  });
 
 // db.author.create({name: "Armistead Maupin"})
 //   .success(function(authorObj){
