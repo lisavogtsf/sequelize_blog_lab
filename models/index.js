@@ -27,38 +27,36 @@ Object.keys(db).forEach(function(modelName) {
 db.author.hasMany(db.post);
 db.post.belongsTo(db.author);
 
-// db.post.create({content: "Hello World"})
+// more associations review
+db.author.find(1).success(function(foundAuthor){
+var newPost = db.post.build({title: "hello worlds again!"});
+foundAuthor.addPost(newPost).success(function(){
+  newPost.save().then(function(post){
+      console.log(post);
+  })
+})
+});
+
+
+// db.post.create({content: "Such an exciting post"})
 //   .success(function(postObj){
 //     console.log("postObj: ", postObj);
 //   });
 
-// db.author.create({name: "George Eliot"})
+// db.author.create({name: "Armistead Maupin"})
 //   .success(function(authorObj){
 //     console.log("authorObj: ", authorObj);
 //   })
 
-// getPosts and push new one onto that?
-// project.setTasks([task1, task2]).success(function() {
-
-// })
-// project.getTasks().success(function(associatedTasks) {
-
-// })
-
-// author.setPosts([task1, task2]).success(function() {
-
-// })
-// author.getPosts().success(function(associatedTasks) {
-
-// })
-
-// new try in class
-db.author.find(1).success(function(foundAuthor){
-  var newPost = db.post.build({title: "hello worlds again!"});
-  foundAuthor.addPost(newPost).success(function(){
-    newPost.save()
-  })
-}); 
+// // new try in class, note use of addPost
+// // error, new post was null
+// // now posting ok, author is null
+// db.author.find(3).success(function(foundAuthor){
+//   var newPost = db.post.build({content: "yowza!"});
+//   foundAuthor.addPost(newPost).success(function(){
+//     newPost.save();
+//   })
+// }); 
 
 
 
@@ -78,10 +76,10 @@ db.author.find(1).success(function(foundAuthor){
 //   }
 // )
 
-// // how I was doing it, didn't work, ids not sticky
-// db.post.create({content: "Literature"})
+// // // how I was doing it, didn't work, ids not sticky
+// db.post.create({content: "Light reading"})
 //   .success(function(post){
-//     db.author.find(3).success(function(author){
+//     db.author.find(4).success(function(author){
 //       author.setPosts([post])
 //         .success(function(author){
 //          console.log("Author: " + author + " Post:" + post);
@@ -96,9 +94,6 @@ db.author.find(1).success(function(foundAuthor){
 //     console.log()
 //   })
 // })
-
-
-
 
 
 module.exports = lodash.extend({
