@@ -23,6 +23,58 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
+// Associations
+db.author.hasMany(db.post);
+// db.post.belongsTo(db.author);
+
+// db.post.create({content: "Hello World"})
+//   .success(function(postObj){
+//     console.log("postObj: ", postObj);
+//   });
+
+// db.author.create({name: "George Eliot"})
+//   .success(function(authorObj){
+//     console.log("authorObj: ", authorObj);
+//   })
+
+// getPosts and push new one onto that?
+// project.setTasks([task1, task2]).success(function() {
+
+// })
+// project.getTasks().success(function(associatedTasks) {
+
+// })
+
+// author.setPosts([task1, task2]).success(function() {
+
+// })
+// author.getPosts().success(function(associatedTasks) {
+
+// })
+
+
+db.post.create({content: "Literature"})
+  .success(function(post){
+    db.author.find(3).success(function(author){
+      author.setPosts([post])
+        .success(function(author){
+         console.log("Author: " + author + " Post:" + post);
+      })
+    });
+});
+
+// db.post.find(1).success(function(post){
+//   console.log("found post: ", post);
+
+//   post.destroy().success(function(){
+//     console.log()
+//   })
+// })
+
+
+
+
+
 module.exports = lodash.extend({
   sequelize: sequelize,
   Sequelize: Sequelize
