@@ -108,3 +108,5 @@ module.exports = lodash.extend({
   sequelize: sequelize,
   Sequelize: Sequelize
 }, db)
+
+

@@ -7,3 +7,4 @@ function Author(sequelize, DataTypes){
 };
 
 module.exports = Author;
+

@@ -11,3 +11,4 @@ function Post(sequelize, DataTypes){
 };
 
 module.exports = Post;
+
