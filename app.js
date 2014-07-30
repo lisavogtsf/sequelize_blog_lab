@@ -20,22 +20,22 @@ app.use(methodOverride("_method"));
 
 app.get('/', function(req, res){
   // res.send("Try /posts");
-  res.redirect('/posts');
+  res.redirect('/blog');
 });
 
-app.get('/posts', function(req, res){
+app.get('/blog', function(req, res){
   db.post.findAll().success(function(posts){
     res.render('index', {posts: posts});
   })
 })
 
-app.get('/posts/new', function(req, res){
+app.get('/blog/new', function(req, res){
   db.author.findAll().success(function(authors){
     res.render('new', {scribblers: authors});    
   })
 })
 
-app.post('/posts/new', function(req, res){
+app.post('/blog/new', function(req, res){
   console.log("req.body", req.body);
   db.author.find({ where: {id: req.body.blogger} }).success(function(authorObj) {   
     db.post.create({content: req.body.content, authorId: authorObj.id})
@@ -44,7 +44,7 @@ app.post('/posts/new', function(req, res){
         console.log("authorObj", authorObj);
       })
   })
-  res.redirect('/posts/new');
+  res.redirect('/blog/new');
 });
 
 // add an author?
