@@ -13,7 +13,7 @@ var app = express();
 app.set('view-engine', 'ejs');
 // CSS?
 app.use(express.static(__dirname + '/public'));
-// console.log(__dirname);
+console.log(__dirname);
 // middleware
 app.use(bodyParser.urlencoded());
 app.use(methodOverride("_method"));
