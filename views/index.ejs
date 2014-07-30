@@ -1,9 +1,13 @@
 <html>
 <head>
   <title>Sequelize Blog Lab</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <!--show all blog posts sorted by date -->
+    <% posts.forEach(function(indivPosts){ %>
+     <article> <%= indivPosts.content %>  </article> 
+    <% }) %>
 
 </body>
 </html>

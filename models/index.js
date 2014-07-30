@@ -27,16 +27,16 @@ Object.keys(db).forEach(function(modelName) {
 db.author.hasMany(db.post);
 db.post.belongsTo(db.author);
 
-// fixed with Tim, find author by authorId
-// add post written here in code
-db.post.create({content: "even obscure"})
-  .success(function(postObj){
-    // console.log("postObj: ", postObj.dataValues);
-    db.author.find(1).success(function(authorObj){
-      // console.log("authorObj", authorObj);
-      authorObj.addPost(postObj);
-    });
-  });
+// // fixed with Tim, find author by authorId
+// // add post written here in code
+// db.post.create({content: "even obscure"})
+//   .success(function(postObj){
+//     // console.log("postObj: ", postObj.dataValues);
+//     db.author.find(1).success(function(authorObj){
+//       // console.log("authorObj", authorObj);
+//       authorObj.addPost(postObj);
+//     });
+//   });
 
 // // more associations review
 // db.author.find(1).success(function(foundAuthor){
