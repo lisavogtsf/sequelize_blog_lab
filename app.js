@@ -37,16 +37,15 @@ app.get('/posts/new', function(req, res){
 
 app.post('/posts/new', function(req, res){
   console.log("req.body", req.body);
-  db.author.findOrCreate({name: req.body.authorName})
-  .success(function(authorObj){
-    db.post.create({content: req.body.postContent})
+  db.author.find({ where: {id: req.body.blogger} }).success(function(authorObj) {   
+    db.post.create({content: req.body.content, authorId: authorObj.id})
       .success(function(postObj){
-      // console.log("postObj: ", postObj.dataValues);
-      // console.log("authorObj", authorObj);
-      authorObj.addPost(postObj);
-      res.render('index');
-    });
-  });
+        console.log("postObj: ", postObj.dataValues);
+        console.log("authorObj", authorObj);
+        })
+})
+
+  res.redirect('/posts/new');
 });
 
 // add an author?
