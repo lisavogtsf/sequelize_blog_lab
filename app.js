@@ -29,7 +29,9 @@ app.get('/posts', function(req, res){
   })
 })
 
-
+app.get('/posts/new', function(req, res){
+  res.render('new.ejs');
+})
 
 
 
