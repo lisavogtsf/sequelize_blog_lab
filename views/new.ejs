@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>Add a new author/post</h1>
-  <form method="post" action="/posts">
+<!--   <form method="post" action="/posts">
     <fieldset>
       <legend>Add a new blog post</legend>
 
@@ -14,10 +14,28 @@
     <input type="submit">
 
     </fieldset>
-  </form>
+  </form> -->
+    <!-- from heavy review -->
+    <form method="POST" action="/posts/new">
+      <div>
+         <select name="blogger">
+            <% scribblers.forEach(function (author) { %>
+                <option value="<%=author.id%>">
+                    <%= author.name %>
+                 </option>
+            <% }) %>
+         </select>
+      </div>
+       <!--<input type="text" name="content">-->
+       <textarea name="content"></textarea>
+       <div>
+        <input type="submit">
+      </div>
+    </form>
 
   <ul>
     <li><a href="../">Home</a></li>
+    <li>Other Link</li>
   </ul>
 
 </body>

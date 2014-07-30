@@ -1,10 +1,14 @@
 body {
-  background-color: teal;
+  background-color: lightseagreen;
   color: white;
   font-family: helvetica;
+  text-align: center;
 }
 h1 {
   text-align: center;
+}
+small {
+  font-size: .5em;
 }
 ul {
   text-align: center;
@@ -12,4 +16,7 @@ ul {
 li {
   display: inline;
   padding: 0px 10px 0px 10px;
+}
+div {
+  margin: auto;
 }

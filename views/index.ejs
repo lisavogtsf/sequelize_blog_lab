@@ -7,11 +7,12 @@
     <h1>Show all blog posts</h1>
     <!--show all blog posts sorted by date -->
     <% posts.forEach(function(indivPosts){ %>
-     <article> <%= indivPosts.content %>  </article> 
+     <article> <%= indivPosts.content %><small>.....<%= indivPosts.createdAt %></small>  </article> 
     <% }) %>
     
   <ul>
     <li><a href="posts/new"> Add a new post</a></li>
+    <li>Other Link</li>
   </ul>
 </body>
 </html>

@@ -30,10 +30,12 @@ app.get('/posts', function(req, res){
 })
 
 app.get('/posts/new', function(req, res){
-  res.render('new');
+  db.author.findAll().success(function(authors){
+    res.render('new', {scribblers: authors});    
+  })
 })
 
-app.post('/posts', function(req, res){
+app.post('/posts/new', function(req, res){
   console.log("req.body", req.body);
   db.author.findOrCreate({name: req.body.authorName})
   .success(function(authorObj){
@@ -42,12 +44,15 @@ app.post('/posts', function(req, res){
       // console.log("postObj: ", postObj.dataValues);
       // console.log("authorObj", authorObj);
       authorObj.addPost(postObj);
-      res.render('/posts');
+      res.render('index');
     });
   });
 });
 
+// add an author?
 
+// edit a post?
+// delete a post?
 
 
 
