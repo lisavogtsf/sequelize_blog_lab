@@ -42,9 +42,8 @@ app.post('/posts/new', function(req, res){
       .success(function(postObj){
         console.log("postObj: ", postObj.dataValues);
         console.log("authorObj", authorObj);
-        })
-})
-
+      })
+  })
   res.redirect('/posts/new');
 });
 
