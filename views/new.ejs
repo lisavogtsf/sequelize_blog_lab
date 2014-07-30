@@ -1,9 +1,24 @@
 <html>
 <head>
   <title>Add a new author/post</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
   <h1>Add a new author/post</h1>
+  <form method="post" action="posts/new">
+    <fieldset>
+      <legend>Add a new blog post</legend>
+
+    <input type="text" name="author.name" placeholder="Author name">
+    <input type="textbox" name="post.content" size="100" placeholder="Post content goes here">
+    <input type="submit">
+
+    </fieldset>
+  </form>
+
+  <ul>
+    <li><a href="../">Home</a></li>
+  </ul>
 
 </body>
 </html>
