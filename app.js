@@ -10,7 +10,7 @@ var express = require('express'),
 
 var app = express();
 
-app.set('view-engine', 'ejs');
+app.set('view engine', 'ejs');
 // CSS?
 app.use(express.static(__dirname + '/public'));
 console.log(__dirname);
@@ -25,14 +25,27 @@ app.get('/', function(req, res){
 
 app.get('/posts', function(req, res){
   db.post.findAll().success(function(posts){
-    res.render('index.ejs', {posts: posts});
+    res.render('index', {posts: posts});
   })
 })
 
 app.get('/posts/new', function(req, res){
-  res.render('new.ejs');
+  res.render('new');
 })
 
+app.post('/posts', function(req, res){
+  console.log("req.body", req.body);
+  db.author.findOrCreate({name: req.body.authorName})
+  .success(function(authorObj){
+    db.post.create({content: req.body.postContent})
+      .success(function(postObj){
+      // console.log("postObj: ", postObj.dataValues);
+      // console.log("authorObj", authorObj);
+      authorObj.addPost(postObj);
+      res.render('/posts');
+    });
+  });
+});
 
 
 
