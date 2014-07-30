@@ -6,13 +6,14 @@
 <body>
     <h1>Show all blog posts</h1>
     <!--show all blog posts sorted by date -->
+    <!--I haven't done a sort, but currently they are sorted by id which corresponds to date-->
     <% posts.forEach(function(indivPosts){ %>
-     <article> <%= indivPosts.content %><small>.....<%= indivPosts.createdAt %></small>  </article> 
+     <article> <%= indivPosts.content %><small>...post# <%= indivPosts.id %>....<%= indivPosts.createdAt %></small>  </article> 
     <% }) %>
     
   <ul>
     <li><a href="blog/new"> Add a new post</a></li>
-    <li><a href="">Add new Blogger</a></li>
+    <li><strike><a href="">Add new Blogger</a></strike></li>
     <li>Other Link</li>
   </ul>
 </body>

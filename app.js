@@ -47,8 +47,21 @@ app.post('/blog/new', function(req, res){
   res.redirect('/blog/new');
 });
 
-// add an author?
+// route to specific post by author
+app.get('/blog/:authorId/:id', function(req, res){
+  var authorId = req.params.authorId;
+  var postId = req.params.id;
 
+  db.author.find({where: {id: authorId}})
+    .success(function(authorObj){
+      db.post.find({where: {id: postId}})
+        .success(function(postObj){
+          res.render('show', {post: postObj, author: authorObj});          
+        })
+    })
+});
+
+// add an author?
 // edit a post?
 // delete a post?
 

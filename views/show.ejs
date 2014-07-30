@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Sequelize Blog Lab</title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body>
+    <h1>Show single blog post</h1>
+
+    <article>
+      <h2>by <%= author.name %></h2>
+      <small>...post# <%= post.id %>....<%= post.createdAt %></small>
+      <p> <%= post.content %>
+      </p>
+    </article>
+    
+  <ul>
+    <li><a href="../../">Home</a></li>
+    <li><a href="../../blog/new"> Add a new post</a></li>
+    <li><strike><a href="">Add new Blogger</a></strike></li>
+  </ul>
+</body>
+</html>
+
